@@ -9,5 +9,8 @@ import './images/turing-logo.png';
 import './images/passport.png';
 import './images/confirm.png';
 import './images/airplane.png';
+import './images/suitcase.png';
+import './images/map.png';
+import './images/destination.png';
 
 console.log('This is the JavaScript entry file - your code begins here.');
