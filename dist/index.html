@@ -10,10 +10,42 @@
   <link href="https://fonts.googleapis.com/css2?family=Codystar&family=Comfortaa:wght@700&family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-  
+  <header>
+    <h1 class="travelTracker">travelTRACKER</h1>
+    <nav>
+      <ul>
+       <li><a href=""></a>book</li> 
+       <li><a href=""></a>find</li> 
+       <li><a href=""></a>explore</li> 
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="cardContainer">
+      <article class="travelCard">
+        <div class="headerContent">
+          <div class="locationIconHolder">
+            <img src="./images/passport.png" alt="location icon" class="locationIcon">
+            <h2>location:</h2>
+          </div> 
+          <div class="confirmationHolder">
+            <h3>confirmation status</h3>
+            <img src="./images/confirm.png" alt="confirmation status icon" class="statusIcon"> 
+          </div>        
+          <img src="" alt="alt description">
+        </div>
+        <div class="bodyContent">
+          <div class="departureIconHolder">
+            <img src="./images/airplane.png" alt="takeoff icon" class="takeoffIcon">
+            <h3>Departure: date</h3>
+          </div>
+          <h4>Cost:</h4>
+          <h4>number of travelers</h4>
+        </div>
+      </article>
+    </section>
+  </main>
   <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   <script src="bundle.js"></script>
-
 </body>
 </html>
