@@ -62,14 +62,23 @@ article {
   height: 65%;
 }
 
+.locationIcon,
+.statusIcon,
+.takeoffIcon,
+.headerIcon {
+  height: 2em;
+}
+
 .bodyContent {
   display: flex;
   flex-direction: column;
   // height: 100%;
 }
 
+li,
 .confirmationHolder,
 .locationIconHolder,
 .departureIconHolder {
   display: flex;
+  align-items: center;
 }
