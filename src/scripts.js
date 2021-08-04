@@ -13,4 +13,26 @@ import './images/suitcase.png';
 import './images/map.png';
 import './images/destination.png';
 
+import {
+  fetchData
+} from './apiCalls.js';
+//variables
+let travelersData, tripsData, destinationData;
+//event listeners
+window.addEventListener('load', returnData);
+
+function getData() {
+  return Promise.all([fetchData('travelers'), fetchData('trips'), fetchData('destinations')])
+};
+
+function returnData() {
+  getData()
+    .then(promiseArray => {
+      travelersData = promiseArray[0].travelers;
+      tripsData = promiseArray[1].trips;
+      destinationData = promiseArray[2].destinations;
+      console.log(destinationData);
+    })
+};
+
 console.log('This is the JavaScript entry file - your code begins here.');
