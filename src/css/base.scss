@@ -57,6 +57,19 @@ article {
   height: 55vh;
   margin: 5vh 5vw;
 }
+
 .headerContent {
   height: 65%;
+}
+
+.bodyContent {
+  display: flex;
+  flex-direction: column;
+  // height: 100%;
+}
+
+.confirmationHolder,
+.locationIconHolder,
+.departureIconHolder {
+  display: flex;
 }
