@@ -6,6 +6,8 @@ class Traveler {
     this.travelerTrips = trips;
     this.travelerDestinations = destinations;
   }
+
+  
  
   getTripCost(tripID) {
     if (this.travelerTrips.find(trip => trip.id === tripID)) {
