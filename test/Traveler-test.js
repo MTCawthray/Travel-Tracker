@@ -35,6 +35,22 @@ let travelersData, tripsData, destinationsData, traveler1, traveler2, traveler3,
     expect(traveler2.travelerDestinations[2].destination).to.equal('Miami, Florida');
   })
 
+describe('findDestination()', () => {
+
+  it('should be a function', () => {
+    expect(traveler2.findDestination).to.be.a('function');
+  });
+
+  it('should return a destination object', () => {
+    expect(traveler2.findDestination(traveler2.travelerTrips[0].destinationID)).to.eql(destinationsData[3]);
+  });
+
+  it('should return a message if the argument doesn\'t match a destination', () => {
+    expect(traveler1.findDestination(2409)).to.equal('Sorry, we couldn\'t find that destination id.');
+  });
+
+});
+
 describe('getTripCost()', () => {
 
   it('should be a function', () => {
