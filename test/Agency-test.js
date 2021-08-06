@@ -88,22 +88,5 @@ describe('getDestinations()', () => {
     expect(agency.getDestinations('z')).to.equal('Please input a valid user ID.');
   });
 });
-
-describe('getTripCost()', () => {
-
-  it('should be a function', () => {
-    expect(agency.getTripCost).to.be.a('function');
-  });
-
-  it('should return the cost for a specified trip', () => {
-    expect(agency.getTripCost(89)).to.eql({flight: 450, lodging: 90, fee: 54, total: 594})
-  });
-
-  it('should retunr a message if trip is invalid', ()=> {
-    expect(agency.getTripCost(431)).to.equal('Please enter a valid trip ID.')
-  })
-
-});
-
 });
 
