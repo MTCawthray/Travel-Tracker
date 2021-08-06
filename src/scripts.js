@@ -43,7 +43,7 @@ function returnData() {
 };
 
 function displayTravelerInfo(user, agency) {
-  let trip = user.travelerTrips[1];
-  let destination = user.findDestination(trip.destinationID);
-  domUpdates.renderTravelerInfo(trip, destination, user);
+  // let trips = user.travelerTrips;
+  // let destination = user.findDestination(trip.destinationID);
+  domUpdates.renderTravelerInfo(user, agency);
 }
