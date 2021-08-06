@@ -34,4 +34,22 @@ let travelersData, tripsData, destinationsData, traveler1, traveler2, traveler3,
     expect(traveler1.travelerTrips[0].date).to.equal('2021/01/09');
     expect(traveler2.travelerDestinations[2].destination).to.equal('Miami, Florida');
   })
+
+describe('getTripCost()', () => {
+
+  it('should be a function', () => {
+    expect(traveler1.getTripCost).to.be.a('function');
+  });
+
+  it('should return the cost for a specified trip', () => {
+    expect(traveler1.getTripCost(89)).to.eql({flight: 450, lodging: 90, fee: 54, total: 594})
+  });
+
+  it('should return a message if trip is invalid', ()=> {
+    expect(traveler1.getTripCost(431)).to.equal('Please enter a valid trip ID.');
+
+    expect(traveler1.getTripCost('bananna')).to.equal('Please enter a valid trip ID.');
+  });
+
+});
 });
