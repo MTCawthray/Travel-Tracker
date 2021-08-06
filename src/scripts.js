@@ -7,6 +7,7 @@ import MicroModal from 'micromodal';
 import Agency from './Agency.js';
 import Traveler from './Traveler.js';
 import Trip from './Trip.js';
+import domUpdates from './domUpdates.js';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png';
@@ -37,12 +38,12 @@ function returnData() {
       destinationData = promiseArray[2].destinations;
       agency = new Agency(travelersData, tripsData, destinationData)
       traveler = new Traveler(agency.findTraveler(2), agency.getTrips(2), agency.getDestinations(2));
-      displayTraveler(traveler, agency);
+      displayTravelerInfo(traveler, agency);
     })
 };
 
-function displayTraveler(user, agency) {
+function displayTravelerInfo(user, agency) {
   let trip = user.travelerTrips[1];
-  console.log(trip);
-  let destination = user.destinations
+  let destination = user.findDestination(trip.destinationID);
+  domUpdates.renderTravelerInfo(trip, destination, user);
 }
