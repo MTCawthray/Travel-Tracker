@@ -7,7 +7,14 @@ class Traveler {
     this.travelerDestinations = destinations;
   }
 
-  
+  findDestination(destID) {
+    let destinationIDs = this.travelerDestinations.map(dest => dest.id);
+    if (destID > 0 && destinationIDs.includes(destID)) {
+      return this.travelerDestinations.find(destination => destID === destination.id);
+    } else {
+      return 'Sorry, we couldn\'t find that destination id.';
+    }
+  }
  
   getTripCost(tripID) {
     if (this.travelerTrips.find(trip => trip.id === tripID)) {
