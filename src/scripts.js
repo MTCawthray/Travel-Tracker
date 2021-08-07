@@ -1,9 +1,10 @@
 import './css/base.scss';
-import MicroModal from 'micromodal';
+// import MicroModal from 'micromodal';
 import Agency from './Agency.js';
 import Traveler from './Traveler.js';
 import Trip from './Trip.js';
 import domUpdates from './domUpdates.js';
+import dayjs from 'dayjs';
 
 import './images/turing-logo.png';
 import './images/passport.png';
