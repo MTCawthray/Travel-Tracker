@@ -44,6 +44,24 @@ class Traveler {
     }
     return 0;
   }
+
+  getYearlyCost(currentYear) {
+    let thisYearsTrips = this.travelerTrips.filter(trip => {
+      let year = trip.date.split('/')[0];
+      if (year === currentYear) {
+        return trip;
+      }
+    });
+    if (thisYearsTrips.length > 0) {
+      return thisYearsTrips.reduce((acc, trip) => {
+        let tripCost = this.getTripCost(trip.id);
+        acc += tripCost.total;
+        return acc;
+      }, 0);
+    }
+    return 0;
+  }
+
 }
 
 export default Traveler;

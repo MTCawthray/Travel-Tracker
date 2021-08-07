@@ -88,4 +88,20 @@ describe('getTotalCostAllTrips()', () => {
   })
 
 })
+
+describe('getYearlyCost()', () => {
+
+  it('should be a function', () => {
+    expect(traveler1.getYearlyCost).to.be.a('function');
+  });
+  
+  it('should return a number total for all trips in a specified year', () => {
+    expect(traveler1.getYearlyCost('2021')).to.equal(1067);
+  });
+
+  it('should return 0 if there were no trips this year', () => {
+    expect(traveler2.getYearlyCost('2021')).to.equal(0);
+  });
+  
+})
 });
