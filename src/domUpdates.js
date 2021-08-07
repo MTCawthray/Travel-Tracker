@@ -1,3 +1,5 @@
+import { determineStatus } from "./scripts";
+
 const domUpdates = {
   renderTravelerInfo(traveler, trips) {
     let cardContainer = document.getElementById('card-container');
@@ -5,6 +7,7 @@ const domUpdates = {
     trips.forEach(trip => {
      let totalCost = traveler.getTripCost(trip.id).total;
      let destination = traveler.findDestination(trip.destinationID);
+     let tripStatus = determineStatus(trip);
      cardContainer.innerHTML += `
       <article class="travelCard">
             <div class="headerContent">
@@ -16,7 +19,7 @@ const domUpdates = {
                 </div> 
                 <div class="confirmationHolder">
                   <h3>status: ${trip.status}</h3>
-                  <img src="${'./images/confirm.png'}" alt="confirmation status icon" class="statusIcon"> 
+                  <img src="${tripStatus}" alt="confirmation status icon" class="statusIcon"> 
                 </div>       
               </div>
               <div class="destinationImg">
