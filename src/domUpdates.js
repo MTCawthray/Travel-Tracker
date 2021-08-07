@@ -1,6 +1,10 @@
 import { determineStatus } from "./scripts";
 
+//Nav buttons
+const bookBtn = document.getElementById('book-btn');
+
 const domUpdates = {
+  //render methods
   renderTravelerInfo(traveler, trips) {
     let cardContainer = document.getElementById('card-container');
     cardContainer.innerHTML = ``;
@@ -46,8 +50,11 @@ const domUpdates = {
       <h4 class="footerHeading" id="greeting">Hello, ${traveler.name}!</h4>
       <h4 class="footerHeading" id="total-spent">This Years Total $${traveler.getYearlyCost('2021')}</h4>
       `
-  }
+  },
 
+//query selectors
+
+  bookBtn,
 }
 
 export default domUpdates;
