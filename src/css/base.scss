@@ -82,6 +82,7 @@ article {
 
 .headerContent {
   height: 65%;
+  overflow: hidden;
 }
 
 .locationIcon,
@@ -92,7 +93,7 @@ article {
 }
 
 .headerInfo {
-  margin: -12vh 3vw;
+padding: .5em;
 }
 
 .destinationImg { 

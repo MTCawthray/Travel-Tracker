@@ -5,13 +5,10 @@ const domUpdates = {
     trips.forEach(trip => {
      let totalCost = traveler.getTripCost(trip.id).total;
      let destination = traveler.findDestination(trip.destinationID);
-     console.log(destination);
      cardContainer.innerHTML += `
       <article class="travelCard">
             <div class="headerContent">
-              <div class="destinationImg">
-                <img src=${destination.image} alt="${destination.alt}" class="destinationImg" >
-              </div>
+              
               <div class="headerInfo">
                 <div class="locationIconHolder">
                   <img src="./images/passport.png" alt="location icon" class="locationIcon">
@@ -19,8 +16,11 @@ const domUpdates = {
                 </div> 
                 <div class="confirmationHolder">
                   <h3>status: ${trip.status}</h3>
-                  <img src="./images/confirm.png" alt="confirmation status icon" class="statusIcon"> 
+                  <img src="${'./images/confirm.png'}" alt="confirmation status icon" class="statusIcon"> 
                 </div>       
+              </div>
+              <div class="destinationImg">
+                <img src=${destination.image} alt="${destination.alt}" class="destinationImg" >
               </div>
             </div>
             <div class="bodyContent">
