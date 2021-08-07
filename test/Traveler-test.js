@@ -58,7 +58,7 @@ describe('getTripCost()', () => {
   });
 
   it('should return the cost for a specified trip', () => {
-    expect(traveler1.getTripCost(89)).to.eql({flight: 450, lodging: 90, fee: 54, total: 594})
+    expect(traveler1.getTripCost(89)).to.eql({flight: 2250, lodging: 1170, fee: 342, total: 3762})
   });
 
   it('should return a message if trip is invalid', ()=> {
@@ -76,9 +76,9 @@ describe('getTotalCostAllTrips()', () => {
   });
 
   it('should return the total of all user\'s trips', () => {
-    expect(traveler2.getTotalCostAllTrips()).to.equal(1724.8);
+    expect(traveler2.getTotalCostAllTrips()).to.equal(15723.4);
 
-    expect(traveler1.getTotalCostAllTrips()).to.equal(2717);
+    expect(traveler1.getTotalCostAllTrips()).to.equal(14531);
   });
 
   it('should return 0 if traveler doesn\'t have any trips', () => {
@@ -96,7 +96,7 @@ describe('getYearlyCost()', () => {
   });
   
   it('should return a number total for all trips in a specified year', () => {
-    expect(traveler1.getYearlyCost('2021')).to.equal(1067);
+    expect(traveler1.getYearlyCost('2021')).to.equal(4125);
   });
 
   it('should return 0 if there were no trips this year', () => {
