@@ -41,7 +41,7 @@ const domUpdates = {
     footerDisplay.innerHTML = ``;
     footerDisplay.innerHTML = `
       <h4 class="footerHeading" id="greeting">Hello, ${traveler.name}!</h4>
-      <h4 class="footerHeading" id="total-spent">Total Spent $${traveler.getTotalCostAllTrips()}</h4>
+      <h4 class="footerHeading" id="total-spent">This Years Total $${traveler.getYearlyCost('2021')}</h4>
       `
   }
 
