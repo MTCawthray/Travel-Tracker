@@ -46,4 +46,11 @@ function displayTravelerInfo(user) {
   let trips = user.travelerTrips;
   domUpdates.renderTravelerInfo(user, trips);
   domUpdates.renderFooterInfo(user);
-}
+};
+
+function determineStatus(trip) {
+  if (trip.status === 'approved') {
+    return './images/confirm.png';
+  }
+  return './images/wall-clock.png';
+};
