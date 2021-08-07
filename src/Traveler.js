@@ -33,6 +33,17 @@ class Traveler {
     }
   return 'Please enter a valid trip ID.';
   }
+
+  getTotalCostAllTrips() {
+    if (this.travelerTrips.length > 0) {
+      return this.travelerTrips.reduce((acc, trip) => {
+        let tripCost = this.getTripCost(trip.id);
+        acc += tripCost.total
+        return acc;
+      }, 0)
+    }
+    return 0;
+  }
 }
 
 export default Traveler;
