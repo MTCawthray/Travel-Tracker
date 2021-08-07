@@ -1,13 +1,6 @@
 const domUpdates = {
-  renderTravelerInfo(traveler, agency) {
+  renderTravelerInfo(traveler, trips) {
     let cardContainer = document.getElementById('card-container');
-    let footerDisplay = document.getElementById('footer-info');
-    let trips = traveler.travelerTrips;
-    footerDisplay.innerHTML = ``;
-    footerDisplay.innerHTML = `
-      <h4 class="footerHeading" id="greeting">Hello, ${traveler.name}!</h4>
-      <h4 class="footerHeading" id="total-spent">Total Spent $${traveler.getTotalCostAllTrips()}</h4>
-      `
     cardContainer.innerHTML = ``;
     trips.forEach(trip => {
      let totalCost = traveler.getTripCost(trip.id).total;
@@ -41,7 +34,15 @@ const domUpdates = {
           </article>
      `
    })
-   
+  },
+
+  renderFooterInfo(traveler) {
+    let footerDisplay = document.getElementById('footer-info');
+    footerDisplay.innerHTML = ``;
+    footerDisplay.innerHTML = `
+      <h4 class="footerHeading" id="greeting">Hello, ${traveler.name}!</h4>
+      <h4 class="footerHeading" id="total-spent">Total Spent $${traveler.getTotalCostAllTrips()}</h4>
+      `
   }
 
 }

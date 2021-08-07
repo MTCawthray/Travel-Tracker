@@ -42,8 +42,8 @@ function returnData() {
     })
 };
 
-function displayTravelerInfo(user, agency) {
-  // let trips = user.travelerTrips;
-  // let destination = user.findDestination(trip.destinationID);
-  domUpdates.renderTravelerInfo(user, agency);
+function displayTravelerInfo(user) {
+  let trips = user.travelerTrips;
+  domUpdates.renderTravelerInfo(user, trips);
+  domUpdates.renderFooterInfo(user);
 }
