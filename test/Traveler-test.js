@@ -68,4 +68,24 @@ describe('getTripCost()', () => {
   });
 
 });
+
+describe('getTotalCostAllTrips()', () => {
+
+  it('should be a function', () => {
+    expect(traveler2.getTotalCostAllTrips).to.be.a('function');
+  });
+
+  it('should return the total of all user\'s trips', () => {
+    expect(traveler2.getTotalCostAllTrips()).to.equal(1724.8);
+
+    expect(traveler1.getTotalCostAllTrips()).to.equal(2717);
+  });
+
+  it('should return 0 if traveler doesn\'t have any trips', () => {
+    let traveler4 = new Traveler(agency.findTraveler(4), [], []);
+
+    expect(traveler4.getTotalCostAllTrips()).to.equal(0);
+  })
+
+})
 });
