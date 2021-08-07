@@ -1,24 +1,17 @@
+import { determineStatus } from "./scripts";
+
 const domUpdates = {
-  renderTravelerInfo(traveler, agency) {
+  renderTravelerInfo(traveler, trips) {
     let cardContainer = document.getElementById('card-container');
-    let footerDisplay = document.getElementById('footer-info');
-    let trips = traveler.travelerTrips;
-    footerDisplay.innerHTML = ``;
-    footerDisplay.innerHTML = `
-      <h4 class="footerHeading" id="greeting">Hello, ${traveler.name}!</h4>
-      <h4 class="footerHeading" id="total-spent">Total Spent $${traveler.getTotalCostAllTrips()}</h4>
-      `
     cardContainer.innerHTML = ``;
     trips.forEach(trip => {
      let totalCost = traveler.getTripCost(trip.id).total;
      let destination = traveler.findDestination(trip.destinationID);
-     console.log(destination);
+     let tripStatus = determineStatus(trip);
      cardContainer.innerHTML += `
       <article class="travelCard">
             <div class="headerContent">
-              <div class="destinationImg">
-                <img src=${destination.image} alt="${destination.alt}" class="destinationImg" >
-              </div>
+              
               <div class="headerInfo">
                 <div class="locationIconHolder">
                   <img src="./images/passport.png" alt="location icon" class="locationIcon">
@@ -26,8 +19,11 @@ const domUpdates = {
                 </div> 
                 <div class="confirmationHolder">
                   <h3>status: ${trip.status}</h3>
-                  <img src="./images/confirm.png" alt="confirmation status icon" class="statusIcon"> 
+                  <img src="${tripStatus}" alt="confirmation status icon" class="statusIcon"> 
                 </div>       
+              </div>
+              <div class="destinationImg">
+                <img src=${destination.image} alt="${destination.alt}" class="destinationImg" >
               </div>
             </div>
             <div class="bodyContent">
@@ -41,7 +37,15 @@ const domUpdates = {
           </article>
      `
    })
-   
+  },
+
+  renderFooterInfo(traveler) {
+    let footerDisplay = document.getElementById('footer-info');
+    footerDisplay.innerHTML = ``;
+    footerDisplay.innerHTML = `
+      <h4 class="footerHeading" id="greeting">Hello, ${traveler.name}!</h4>
+      <h4 class="footerHeading" id="total-spent">This Years Total $${traveler.getYearlyCost('2021')}</h4>
+      `
   }
 
 }

@@ -17,12 +17,14 @@ import './images/airplane.png';
 import './images/suitcase.png';
 import './images/map.png';
 import './images/destination.png';
+import './images/wall-clock.png';
 
 import {
   fetchData
 } from './apiCalls.js';
 //variables
 let travelersData, tripsData, destinationData, traveler, agency, trip;
+
 //event listeners
 window.addEventListener('load', returnData);
 
@@ -42,8 +44,17 @@ function returnData() {
     })
 };
 
-function displayTravelerInfo(user, agency) {
-  // let trips = user.travelerTrips;
-  // let destination = user.findDestination(trip.destinationID);
-  domUpdates.renderTravelerInfo(user, agency);
-}
+function displayTravelerInfo(user) {
+  let trips = user.travelerTrips;
+  domUpdates.renderTravelerInfo(user, trips);
+  domUpdates.renderFooterInfo(user);
+};
+
+export function determineStatus(booking) {
+  if (booking.status === 'approved') {
+    return './images/confirm.png';
+  } else {
+    return './images/wall-clock.png';
+  };
+};
+
