@@ -17,12 +17,14 @@ import './images/airplane.png';
 import './images/suitcase.png';
 import './images/map.png';
 import './images/destination.png';
+import './images/wall-clock.png';
 
 import {
   fetchData
 } from './apiCalls.js';
 //variables
 let travelersData, tripsData, destinationData, traveler, agency, trip;
+
 //event listeners
 window.addEventListener('load', returnData);
 
@@ -48,9 +50,11 @@ function displayTravelerInfo(user) {
   domUpdates.renderFooterInfo(user);
 };
 
-function determineStatus(trip) {
-  if (trip.status === 'approved') {
+export function determineStatus(booking) {
+  if (booking.status === 'approved') {
     return './images/confirm.png';
-  }
-  return './images/wall-clock.png';
+  } else {
+    return './images/wall-clock.png';
+  };
 };
+
