@@ -6,7 +6,7 @@ const domUpdates = {
     footerDisplay.innerHTML = ``;
     footerDisplay.innerHTML = `
       <h4 class="footerHeading" id="greeting">Hello, ${traveler.name}!</h4>
-      <h4 class="footerHeading" id="total-spent">Total Spent ${'need method'}</h4>
+      <h4 class="footerHeading" id="total-spent">Total Spent $${traveler.getTotalCostAllTrips()}</h4>
       `
     cardContainer.innerHTML = ``;
     trips.forEach(trip => {
