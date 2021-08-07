@@ -1,8 +1,14 @@
 const domUpdates = {
   renderTravelerInfo(traveler, agency) {
     let cardContainer = document.getElementById('card-container');
-    cardContainer.innerHTML = ``;
+    let footerDisplay = document.getElementById('footer-info');
     let trips = traveler.travelerTrips;
+    footerDisplay.innerHTML = ``;
+    footerDisplay.innerHTML = `
+      <h4 class="footerHeading" id="greeting">Hello, ${traveler.name}!</h4>
+      <h4 class="footerHeading" id="total-spent">Total Spent $${traveler.getTotalCostAllTrips()}</h4>
+      `
+    cardContainer.innerHTML = ``;
     trips.forEach(trip => {
      let totalCost = traveler.getTripCost(trip.id).total;
      let destination = traveler.findDestination(trip.destinationID);
