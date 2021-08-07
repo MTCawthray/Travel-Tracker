@@ -19,13 +19,13 @@ import {
   fetchData
 } from './apiCalls.js';
 //variables
-let travelersData, tripsData, destinationData, traveler, agency, trip;
+let travelersData, tripsData, destinationData, traveler, agency, user;
 
 //event listeners
 window.addEventListener('load', returnData);
 
 function getData() {
-  return Promise.all([fetchData('travelers'), fetchData('trips'), fetchData('destinations')])
+  return Promise.all([fetchData('travelers'), fetchData('trips'), fetchData('destinations'), fetchData(`travelers/${'1'}`)])
 };
 
 function returnData() {
@@ -34,8 +34,9 @@ function returnData() {
       travelersData = promiseArray[0].travelers;
       tripsData = promiseArray[1].trips;
       destinationData = promiseArray[2].destinations;
+      user = promiseArray[3]
       agency = new Agency(travelersData, tripsData, destinationData)
-      traveler = new Traveler(agency.findTraveler(2), agency.getTrips(2), agency.getDestinations(2));
+      traveler = new Traveler(user, agency.getTrips(user.id), agency.getDestinations(user.id));
       displayTravelerInfo(traveler, agency);
     })
 };
