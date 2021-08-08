@@ -52,6 +52,13 @@ const domUpdates = {
       `
   },
 
+  renderDestinationList(names) {
+    let selection = document.getElementById('select-destination');
+    selection.innerHTML = '<option value="placeholder">Select a destination</option>';
+    names.forEach(name => {
+      selection.innerHTML += `<option value=${name}>${name}</option>`
+    });
+  },
 //query selectors
 
   bookBtn,
