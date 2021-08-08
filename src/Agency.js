@@ -33,6 +33,14 @@ class Agency {
     return this.destinations.map(dest => dest.destination);
   }
 
+  findDestinationInfo(name) {
+    let destination = this.destinations.find(dest => dest.destination === name);
+    if (destination) {
+      return destination;
+    }
+    return 'Destination not found, please try another destination.';
+  }
+
 }
 
 export default Agency;

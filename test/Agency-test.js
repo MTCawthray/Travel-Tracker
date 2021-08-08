@@ -100,5 +100,17 @@ describe('getAllDestinationNames()', () => {
   });
 
 });
+
+describe('findDestinationInfo()', () => {
+
+  it('should be a function', () => {
+    expect(agency.findDestinationInfo).to.be.a('function');
+  });
+
+  it('should return a destination object that matches the name passed', () => {
+    expect(agency.findDestinationInfo('Toronto, Canada')).to.eql(destinations[1]);
+  });
+
+})
 });
 
