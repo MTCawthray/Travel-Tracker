@@ -71,6 +71,13 @@ ul {
   display: flex;
 }
 
+li:hover {
+  color: rgb(2, 41, 140);
+  text-decoration: overline;
+  font-weight: bolder;
+  font-style: italic;
+}
+
 main {
   height: 86vh;
   display: flex;
