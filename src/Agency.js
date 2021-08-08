@@ -29,6 +29,10 @@ class Agency {
     return 'Please input a valid user ID.';
   }
 
+  getAllDestinationNames() {
+    return this.destinations.map(dest => dest.destination);
+  }
+
 }
 
 export default Agency;

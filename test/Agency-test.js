@@ -88,5 +88,17 @@ describe('getDestinations()', () => {
     expect(agency.getDestinations('z')).to.equal('Please input a valid user ID.');
   });
 });
+
+describe('getAllDestinationNames()', () => {
+
+  it('should be a function', () => {
+    expect(agency.getAllDestinationNames).to.be.a('function');
+  });
+
+  it('should return an array of all of the destinations', () => {
+    expect(agency.getAllDestinationNames()).to.eql(agency.destinations.map(dest => dest.destination));
+  });
+
+});
 });
 
