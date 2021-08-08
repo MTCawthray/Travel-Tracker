@@ -64,15 +64,14 @@ function bookTrip() {
   const destinationSelection = document.getElementById('select-destination').value;
   const destinationObj = agency.findDestinationInfo(destinationSelection);
   const departDate = dayjs(document.getElementById('departure-date').value).format('YYYY/MM/DD');
-  console.log(departDate);
   const returnDate = dayjs(document.getElementById('return-date').value);
   const dur = returnDate.diff(departDate, 'day');
-  // console.log(dur);
+  trip = new Trip(bookableID, traveler, destinationObj, numTravelers, departDate, dur)
+
   
   //Then we can kick off a post request with the data we have from our form
 
-  trip = new Trip(bookableID, traveler, destinationObj, numTravelers, departDate, dur)
-  console.log(trip);
+  
 };
 
 export function determineStatus(booking) {
