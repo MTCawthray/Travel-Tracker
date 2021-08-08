@@ -34,7 +34,7 @@ class Agency {
   }
 
   findDestinationInfo(name) {
-    let destination = this.destinations.find(dest => dest.destination === name);
+    let destination = this.destinations.find(dest => dest.destination.includes(name));
     if (destination) {
       return destination;
     }
