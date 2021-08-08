@@ -59,16 +59,20 @@ function displayDestinationList() {
 }
 
 function bookTrip() {
-  
+  event.preventDefault();
   const numTravelers = document.getElementById('select-num-travelers').value;
-  const destination = document.getElementById('select-destination').value;
-  //will likely need method in agency to return destination obj
-  const departDate = document.getElementById('departure-date').value;
-  const returnDate = document.getElementById('return-date').value;
-  //Then we can kick off a post request with the data we have from our form
-  const dur =//need method in agency to determine duration of trip to pass in as dur
-  trip = new Trip(bookableID, traveler, destination, numTravelers, departDate, dur)
+  const destinationSelection = document.getElementById('select-destination').value;
+  const destinationObj = agency.findDestinationInfo(destinationSelection);
+  const departDate = dayjs(document.getElementById('departure-date').value).format('YYYY/MM/DD');
+  console.log(departDate);
+  const returnDate = dayjs(document.getElementById('return-date').value);
+  const dur = returnDate.diff(departDate, 'day');
+  // console.log(dur);
   
+  //Then we can kick off a post request with the data we have from our form
+
+  trip = new Trip(bookableID, traveler, destinationObj, numTravelers, departDate, dur)
+  console.log(trip);
 };
 
 export function determineStatus(booking) {
