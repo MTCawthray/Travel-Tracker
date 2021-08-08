@@ -1,5 +1,5 @@
 import './css/base.scss';
-// import MicroModal from 'micromodal';
+import MicroModal from 'micromodal';
 import Agency from './Agency.js';
 import Traveler from './Traveler.js';
 import Trip from './Trip.js';
@@ -20,9 +20,11 @@ import {
 } from './apiCalls.js';
 //variables
 let travelersData, tripsData, destinationData, traveler, agency, user;
+const bookBtn = document.getElementById('book-btn');
 
 //event listeners
 window.addEventListener('load', returnData);
+bookBtn.addEventListener('click', MicroModal.init);
 
 function getData() {
   return Promise.all([fetchData('travelers'), fetchData('trips'), fetchData('destinations'), fetchData(`travelers/${'1'}`)])
