@@ -40,13 +40,15 @@
       </header>
       <div class="modalContent" id="modal-1-content">
         <form class="bookingForm">
-          <input type="date" class="departureDate" id="departure-date" required ><label for="departure-date" class="inputLabel">Depart</label>
-          <input type="date" class="returnDate" id="return-date" required><label for="return-date" class="inputLabel">Return</label>
-          <input type="number" name="numberOfTravelers" class="selectNumTravelers" id="select-num-travelers" value='1' step='1' min='1' max='40' aria-required="true"><label for="select-num-travelers" class="selectNumLabel" >How many travelers?</label>
           <select class="selectDestination" id="select-destination" name="destinations" placeholder="Select a destination" aria-required="true" required>
             <option value="placeholder">Select a destination</option>
             <option value="interpolate destination name here">interpolate destination name here</option>
           </select>
+          <div class="dateHolder">
+            <label for="departure-date" class="inputLabel">Depart</label><input type="date" class="selectDate" id="departure-date" required >
+            <label for="return-date" class="inputLabel">Return</label><input type="date" class="selectDate" id="return-date" required>
+          </div>
+          <label for="select-num-travelers" class="selectNumLabel" >How many travelers?</label><input type="number" name="numberOfTravelers" class="selectNumTravelers" id="select-num-travelers" value='1' step='1' min='1' max='40' aria-required="true">
           <button type="submit" class="submitBookingBtn" id="submit-booking-btn" name="submitBookingBtn">Submit Trip</button>
         </form>
       </div>

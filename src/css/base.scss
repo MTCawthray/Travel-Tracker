@@ -159,8 +159,10 @@ li,
 
 .modalHeader {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding: 0;
 }
 
 .modalTitle {
@@ -176,18 +178,30 @@ li,
 .modalClose {
   background: transparent;
   border: 0;
-  margin: -3em -20em 0 0;
+  // margin: -3em -20em 0 0;
 }
 
 .modalHeader .modalClose:before { content: "\2715"; }
 
 .modalContent {
+  display: flex;
+  flex-direction: column;
   margin-top: 2rem;
   margin-bottom: 2rem;
   line-height: 1.5;
   color: rgba(0,0,0,.8);
 }
 
+.dateHolder {
+  display: flex;
+  flex-direction: column;
+}
+
+.selectDestination,
+.selectNumLabel,
+.selectDate {
+  margin: 0 .6em 1em 0;
+}
 //Demo Animation Style
 
 @keyframes mmfadeIn {
