@@ -72,7 +72,7 @@ ul {
 }
 
 li:hover {
-  color: rgb(2, 41, 140);
+  color: #00449e;
   text-decoration: overline;
   font-weight: bolder;
   font-style: italic;
@@ -129,15 +129,13 @@ li,
   align-items: center;
 }
 
-/**************************\
-  Basic Modal Styles
-\**************************/
+//book trip modal
 
 .modal {
   font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
 }
 
-.modal__overlay {
+.modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -149,23 +147,23 @@ li,
   align-items: center;
 }
 
-.modal__container {
+.modalContainer {
   background-color: #fff;
   padding: 30px;
-  max-width: 500px;
-  max-height: 100vh;
+  height: 57vh;
+  width: 97vw;
   border-radius: 4px;
   overflow-y: auto;
   box-sizing: border-box;
 }
 
-.modal__header {
+.modalHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.modal__title {
+.modalTitle {
   margin-top: 0;
   margin-bottom: 0;
   font-weight: 600;
@@ -175,63 +173,23 @@ li,
   box-sizing: border-box;
 }
 
-.modal__close {
+.modalClose {
   background: transparent;
   border: 0;
+  margin: -3em -20em 0 0;
 }
 
-.modal__header .modal__close:before { content: "\2715"; }
+.modalHeader .modalClose:before { content: "\2715"; }
 
-.modal__content {
+.modalContent {
   margin-top: 2rem;
   margin-bottom: 2rem;
   line-height: 1.5;
   color: rgba(0,0,0,.8);
 }
 
-.modal__btn {
-  font-size: .875rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
-  background-color: #e6e6e6;
-  color: rgba(0,0,0,.8);
-  border-radius: .25rem;
-  border-style: none;
-  border-width: 0;
-  cursor: pointer;
-  -webkit-appearance: button;
-  text-transform: none;
-  overflow: visible;
-  line-height: 1.15;
-  margin: 0;
-  will-change: transform;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  transition: -webkit-transform .25s ease-out;
-  transition: transform .25s ease-out;
-  transition: transform .25s ease-out,-webkit-transform .25s ease-out;
-}
+//Demo Animation Style
 
-.modal__btn:focus, .modal__btn:hover {
-  -webkit-transform: scale(1.05);
-  transform: scale(1.05);
-}
-
-.modal__btn-primary {
-  background-color: #00449e;
-  color: #fff;
-}
-
-
-
-/**************************\
-  Demo Animation Style
-\**************************/
 @keyframes mmfadeIn {
     from { opacity: 0; }
       to { opacity: 1; }
@@ -252,31 +210,31 @@ li,
     to { transform: translateY(-10%); }
 }
 
-.micromodal-slide {
+.micromodalSlide {
   display: none;
 }
 
-.micromodal-slide.is-open {
+.micromodalSlide.is-open {
   display: block;
 }
 
-.micromodal-slide[aria-hidden="false"] .modal__overlay {
+.micromodalSlide[aria-hidden="false"] .modalOverlay {
   animation: mmfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 
-.micromodal-slide[aria-hidden="false"] .modal__container {
+.micromodalSlide[aria-hidden="false"] .modalContainer {
   animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
 }
 
-.micromodal-slide[aria-hidden="true"] .modal__overlay {
+.micromodalSlide[aria-hidden="true"] .modalOverlay {
   animation: mmfadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 
-.micromodal-slide[aria-hidden="true"] .modal__container {
+.micromodalSlide[aria-hidden="true"] .modalContainer {
   animation: mmslideOut .3s cubic-bezier(0, 0, .2, 1);
 }
 
-.micromodal-slide .modal__container,
-.micromodal-slide .modal__overlay {
+.micromodalSlide .modalContainer,
+.micromodalSlide .modalOverlay {
   will-change: transform;
 }
