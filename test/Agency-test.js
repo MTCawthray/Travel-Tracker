@@ -111,6 +111,10 @@ describe('findDestinationInfo()', () => {
     expect(agency.findDestinationInfo('Toronto, Canada')).to.eql(destinations[1]);
   });
 
+  it('should return a message when a destination is not found', () => {
+    expect(agency.findDestinationInfo('El Dorado')).to.equal('Destination not found, please try another destination.')
+  });
+
 })
 });
 
