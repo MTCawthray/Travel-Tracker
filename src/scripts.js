@@ -16,7 +16,8 @@ import './images/destination.png';
 import './images/wall-clock.png';
 
 import {
-  fetchData
+  fetchData,
+  postBooking
 } from './apiCalls.js';
 //variables
 let travelersData, tripsData, destinationData, traveler, agency, user, trip, bookableID;
@@ -42,7 +43,7 @@ function returnData() {
       agency = new Agency(travelersData, tripsData, destinationData)
       traveler = new Traveler(user, agency.getTrips(user.id), agency.getDestinations(user.id));
       bookableID = traveler.travelerTrips.length +1;
-      displayTravelerInfo(traveler, agency);
+      displayTravelerInfo(traveler);
       displayDestinationList();
     })
 };
@@ -59,7 +60,6 @@ function displayDestinationList() {
 }
 
 function bookTrip() {
-  event.preventDefault();
   const numTravelers = document.getElementById('select-num-travelers').value;
   const destinationSelection = document.getElementById('select-destination').value;
   const destinationObj = agency.findDestinationInfo(destinationSelection);
@@ -67,10 +67,8 @@ function bookTrip() {
   const returnDate = dayjs(document.getElementById('return-date').value);
   const dur = returnDate.diff(departDate, 'day');
   trip = new Trip(bookableID, traveler, destinationObj, numTravelers, departDate, dur)
-
-  
-  //Then we can kick off a post request with the data we have from our form
-
+  postBooking(trip);
+  displayTravelerInfo(traveler);
   
 };
 
