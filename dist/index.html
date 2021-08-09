@@ -31,7 +31,7 @@
     <section class="footerInfoDisplay" id="footer-info">
     </section>
   </footer>
-  <!-- modal html -->
+  <!--book a trip modal html -->
 <div class="modal micromodalSlide" id="modal-1" aria-hidden="true">
   <div tabindex="-1" class="modalOverlay" data-micromodal-close>
     <div class="modalContainer" role="dialog" aria-modal="true" aria-labelledby="modal-1-title" >
@@ -44,8 +44,7 @@
       <div class="modalContent" id="modal-1-content">
         <form class="bookingForm">
           <select class="selectDestination" id="select-destination" name="destinations" placeholder="Select a destination" aria-required="true" required>
-            <!-- <option value="placeholder">Select a destination</option>
-            <option value="interpolate destination name here">interpolate destination name here</option> -->
+            <!-- destination names interpolate here -->
           </select>
           <div class="dateHolder">
             <label for="departure-date" class="inputLabel">Depart</label><input type="date" class="selectDate" id="departure-date" required >
@@ -53,6 +52,24 @@
           </div>
           <label for="select-num-travelers" class="selectNumLabel" >How many travelers?</label><input type="number" name="numberOfTravelers" class="selectNumTravelers" id="select-num-travelers" value='1' step='1' min='1' max='40' aria-required="true">
           <button type="submit" class="submitBookingBtn" id="submit-booking-btn" name="submitBookingBtn">Submit Trip</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- login modal html -->
+<div class="modal micromodalSlide" id="modal-2" aria-hidden="true">
+  <div tabindex="-1" class="modalOverlay" data-micromodal-close>
+    <div class="modalContainer" role="dialog" aria-modal="true" aria-labelledby="modal-2-title" >
+      <header class="modalHeader">
+        <h2 class="modalTitle" id="modal-2-title">
+          Welcome to travelTRACKER
+        </h2>
+        <button class="modalClose" aria-label="Close modal" data-micromodal-close></button>
+      </header>
+      <div class="modalContent" id="modal-2-content">
+        <form class="loginForm">
+         <h2>add login stuff here</h2> 
         </form>
       </div>
     </div>
