@@ -42,7 +42,7 @@ function returnData() {
       user = promiseArray[3]
       agency = new Agency(travelersData, tripsData, destinationData)
       traveler = new Traveler(user, agency.getTrips(user.id), agency.getDestinations(user.id));
-      bookableID = traveler.travelerTrips.length +1;
+      bookableID = agency.trips.length +1;
       displayTravelerInfo(traveler);
       displayDestinationList();
     })
@@ -66,7 +66,8 @@ function bookTrip() {
   const departDate = dayjs(document.getElementById('departure-date').value).format('YYYY/MM/DD');
   const returnDate = dayjs(document.getElementById('return-date').value);
   const dur = returnDate.diff(departDate, 'day');
-  trip = new Trip(bookableID, traveler, destinationObj, numTravelers, departDate, dur)
+  trip = new Trip(bookableID, traveler, destinationObj, numTravelers, departDate, dur);
+  bookableID++;
   postBooking(trip)
   .then((res) => checkForErrors(res))
   .then((trip) => displayNewTrip(trip))
@@ -84,7 +85,7 @@ function displayNewTrip(newBooking) {
 }
 
 function checkForErrors(response) {
-  console.log(response);
+  console.log(response.body);
   if (!response.ok) {
     throw new Error('Please check to make sure you have all the imput feilds filled out!');
   }
