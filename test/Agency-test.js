@@ -88,5 +88,33 @@ describe('getDestinations()', () => {
     expect(agency.getDestinations('z')).to.equal('Please input a valid user ID.');
   });
 });
+
+describe('getAllDestinationNames()', () => {
+
+  it('should be a function', () => {
+    expect(agency.getAllDestinationNames).to.be.a('function');
+  });
+
+  it('should return an array of all of the destinations', () => {
+    expect(agency.getAllDestinationNames()).to.eql(agency.destinations.map(dest => dest.destination));
+  });
+
+});
+
+describe('findDestinationInfo()', () => {
+
+  it('should be a function', () => {
+    expect(agency.findDestinationInfo).to.be.a('function');
+  });
+
+  it('should return a destination object that matches the name passed', () => {
+    expect(agency.findDestinationInfo('Toronto, Canada')).to.eql(destinations[1]);
+  });
+
+  it('should return a message when a destination is not found', () => {
+    expect(agency.findDestinationInfo('El Dorado')).to.equal('Destination not found, please try another destination.')
+  });
+
+})
 });
 

@@ -14,9 +14,9 @@
     <h1 class="travelTracker">travelTRACKER</h1>
     <nav>
       <ul>
-       <li><img src="./images/suitcase.png" alt="book icon" class="headerIcon"><a href="#"></a>book</li> 
-       <li><img src="./images/map.png" alt="find icon" class="headerIcon"><a href="#"></a>find</li> 
-       <li><img src="./images/destination.png" alt="explore icon" class="headerIcon" ><a href="#"></a>explore</li> 
+       <li id="book-btn" data-micromodal-trigger="modal-1" ><img src="./images/suitcase.png" alt="book icon" class="headerIcon"><a href="#"></a>book</li> 
+       <!-- <li><img src="./images/map.png" alt="find icon" class="headerIcon"><a href="#"></a>find</li> 
+       <li><img src="./images/destination.png" alt="explore icon" class="headerIcon" ><a href="#"></a>explore</li>  -->
       </ul>
     </nav>
   </header>
@@ -28,7 +28,35 @@
     <section class="footerInfoDisplay" id="footer-info">
     </section>
   </footer>
+  <!-- modal html -->
+<div class="modal micromodalSlide" id="modal-1" aria-hidden="true">
+  <div tabindex="-1" class="modalOverlay" data-micromodal-close>
+    <div class="modalContainer" role="dialog" aria-modal="true" aria-labelledby="modal-1-title" >
+      <header class="modalHeader">
+        <h2 class="modalTitle" id="modal-1-title">
+          Book a new trip
+        </h2>
+        <button class="modalClose" aria-label="Close modal" data-micromodal-close></button>
+      </header>
+      <div class="modalContent" id="modal-1-content">
+        <form class="bookingForm">
+          <select class="selectDestination" id="select-destination" name="destinations" placeholder="Select a destination" aria-required="true" required>
+            <!-- <option value="placeholder">Select a destination</option>
+            <option value="interpolate destination name here">interpolate destination name here</option> -->
+          </select>
+          <div class="dateHolder">
+            <label for="departure-date" class="inputLabel">Depart</label><input type="date" class="selectDate" id="departure-date" required >
+            <label for="return-date" class="inputLabel">Return</label><input type="date" class="selectDate" id="return-date" required>
+          </div>
+          <label for="select-num-travelers" class="selectNumLabel" >How many travelers?</label><input type="number" name="numberOfTravelers" class="selectNumTravelers" id="select-num-travelers" value='1' step='1' min='1' max='40' aria-required="true">
+          <button type="submit" class="submitBookingBtn" id="submit-booking-btn" name="submitBookingBtn">Submit Trip</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
   <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+   
   <script src="bundle.js"></script>
 </body>
 </html>

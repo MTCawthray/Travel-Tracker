@@ -63,11 +63,19 @@ body {
   background-image: $primary-background;
   background-size: cover;
   background-position: absolute;
+  background-attachment: fixed;
 }
 
 ul {
   list-style-type: none;
   display: flex;
+}
+
+li:hover {
+  color: #00449e;
+  text-decoration: overline;
+  font-weight: bolder;
+  font-style: italic;
 }
 
 main {
@@ -83,6 +91,7 @@ article {
   width: 87vw;
   height: 55vh;
   margin: 5vh 5vw;
+  box-shadow: 0 10px 9px rgb(0 0 0 / 37%);
 }
 
 .headerContent {
@@ -118,4 +127,128 @@ li,
 .departureIconHolder {
   display: flex;
   align-items: center;
+}
+
+//book trip modal
+
+.modal {
+  font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContainer {
+  background-color: #fff;
+  padding: 30px;
+  height: 57vh;
+  width: 97vw;
+  border-radius: 4px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.modalHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+}
+
+.modalTitle {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  color: #00449e;
+  box-sizing: border-box;
+}
+
+.modalClose {
+  background: transparent;
+  border: 0;
+  // margin: -3em -20em 0 0;
+}
+
+.modalHeader .modalClose:before { content: "\2715"; }
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  color: rgba(0,0,0,.8);
+}
+
+.dateHolder {
+  display: flex;
+  flex-direction: column;
+}
+
+.selectDestination,
+.selectNumLabel,
+.selectDate {
+  margin: 0 .6em 1em 0;
+}
+//Demo Animation Style
+
+@keyframes mmfadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+@keyframes mmfadeOut {
+    from { opacity: 1; }
+      to { opacity: 0; }
+}
+
+@keyframes mmslideIn {
+  from { transform: translateY(15%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes mmslideOut {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10%); }
+}
+
+.micromodalSlide {
+  display: none;
+}
+
+.micromodalSlide.is-open {
+  display: block;
+}
+
+.micromodalSlide[aria-hidden="false"] .modalOverlay {
+  animation: mmfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodalSlide[aria-hidden="false"] .modalContainer {
+  animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodalSlide[aria-hidden="true"] .modalOverlay {
+  animation: mmfadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+}
+
+.micromodalSlide[aria-hidden="true"] .modalContainer {
+  animation: mmslideOut .3s cubic-bezier(0, 0, .2, 1);
+}
+
+.micromodalSlide .modalContainer,
+.micromodalSlide .modalOverlay {
+  will-change: transform;
 }
