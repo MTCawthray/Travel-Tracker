@@ -60,7 +60,7 @@ const domUpdates = {
     });
   },
 
-  //not working yet, possibly not needed if after a booking we can just kick off render traveler info instead.
+  //not working yet, possibly not needed if after a booking we can just kick off render traveler info instead
   renderNewTrip(newBooking, traveler) {
     let totalCost = traveler.getTripCost(newBooking.id).total;
      let destination = traveler.findDestination(newBooking.destinationID);

@@ -60,17 +60,35 @@ function displayDestinationList() {
 }
 
 function bookTrip() {
-  const numTravelers = document.getElementById('select-num-travelers').value;
+  const numTravelers = parseInt(document.getElementById('select-num-travelers').value);
   const destinationSelection = document.getElementById('select-destination').value;
   const destinationObj = agency.findDestinationInfo(destinationSelection);
   const departDate = dayjs(document.getElementById('departure-date').value).format('YYYY/MM/DD');
   const returnDate = dayjs(document.getElementById('return-date').value);
   const dur = returnDate.diff(departDate, 'day');
   trip = new Trip(bookableID, traveler, destinationObj, numTravelers, departDate, dur)
-  postBooking(trip);
+  postBooking(trip)
+  .then((res) => checkForErrors(res))
+  .then((trip) => displayNewTrip(trip))
+  .catch((error) => displayErrorMessage(error));
   displayTravelerInfo(traveler);
   
 };
+
+function displayErrorMessage(error) {
+  console.log(error);
+}
+
+function displayNewTrip(newBooking) {
+  domUpdates.renderNewTrip(newBooking, traveler);
+}
+
+function checkForErrors(response) {
+  console.log(response);
+  if (!response.ok) {
+    throw new Error('Please check to make sure you have all the imput feilds filled out!');
+  }
+}
 
 export function determineStatus(booking) {
   if (booking.status === 'approved') {
