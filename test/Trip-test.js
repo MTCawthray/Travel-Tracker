@@ -18,9 +18,8 @@ describe('Trip class', () => {
     agency = new Agency(travelersData, tripsData, destinationsData);
     traveler1 = new Traveler(agency.findTraveler(1));
     traveler2 = new Traveler(agency.findTraveler(2));
-    trip1 = new Trip(agency.getTrips(traveler1.id)[0]);
-    trip2 = new Trip(agency.getTrips(traveler2.id[0]));
-
+    trip1 = new Trip(117, traveler1, destinationsData[0], 3, '2021/01/09', 15);
+    trip2 = new Trip(166, traveler2, destinationsData[3], 2,'2020/03/05', 6);
   });
 
   it('should be a function', () => {
@@ -39,7 +38,7 @@ describe('Trip class', () => {
     expect(trip1.travelers).to.equal(3);
     expect(trip1.date).to.equal('2021/01/09');
     expect(trip1.duration).to.equal(15);
-    expect(trip1.status).to.equal('approved');
+    expect(trip1.status).to.equal('pending');
     expect(trip1.suggestedActivities).to.eql([]);
   });
 
