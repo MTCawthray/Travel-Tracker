@@ -13,8 +13,6 @@ export function postBooking(newTrip) {
     "status": newTrip.status,
     "suggestedActivities": newTrip.suggestedActivities
   }
-  console.log(typeof body.id);
-  console.log(body)
   return fetch(`http://localhost:3001/api/v1/trips`, {
     'method': "POST",
     'body': JSON.stringify(body),
