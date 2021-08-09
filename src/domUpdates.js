@@ -5,6 +5,8 @@ const bookBtn = document.getElementById('book-btn');
 const cardContainer = document.getElementById('card-container');
 const footerDisplay = document.getElementById('footer-info');
 const selection = document.getElementById('select-destination');
+const submitBookingBtn = document.getElementById('submit-booking-btn');
+
 
 const domUpdates = {
   //render methods
@@ -99,6 +101,7 @@ const domUpdates = {
 //query selectors
 
   bookBtn,
+  submitBookingBtn
 }
 
 export default domUpdates;

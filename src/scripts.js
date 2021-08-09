@@ -14,15 +14,15 @@ import './images/suitcase.png';
 import './images/map.png';
 import './images/destination.png';
 import './images/wall-clock.png';
-
+const {bookBtn, submitBookingBtn} = domUpdates;
 import {
   fetchData,
   postBooking
 } from './apiCalls.js';
 //variables
 let travelersData, tripsData, destinationData, traveler, agency, user, trip, bookableID;
-const bookBtn = document.getElementById('book-btn');
-const submitBookingBtn = document.getElementById('submit-booking-btn');
+// const bookBtn = document.getElementById('book-btn');
+// const submitBookingBtn = document.getElementById('submit-booking-btn');
 
 //event listeners
 window.addEventListener('load', returnData);
