@@ -20,7 +20,7 @@ import {
   postBooking
 } from './apiCalls.js';
 //variables
-let travelersData, tripsData, destinationData, traveler, agency, user, trip, bookableID;
+let travelersData, tripsData, destinationData, traveler, agency, user, bookableID;
 
 //event listeners
 signInBtn.addEventListener('click', () => {
@@ -47,6 +47,7 @@ function getData(id) {
 };
 
 function returnData(id) {
+  // event.preventDefault();
   getData(id)
     .then(promiseArray => {
       travelersData = promiseArray[0].travelers;
@@ -72,22 +73,22 @@ function displayTravelerInfo(user) {
 };
 
 function bookTrip() {
+  event.preventDefault()
   const numTravelers = parseInt(document.getElementById('select-num-travelers').value);
   const destinationSelection = document.getElementById('select-destination').value;
   const destinationObj = agency.findDestinationInfo(destinationSelection);
   const departDate = dayjs(document.getElementById('departure-date').value).format('YYYY/MM/DD');
   const returnDate = dayjs(document.getElementById('return-date').value);
   const dur = returnDate.diff(departDate, 'day');
-  trip = new Trip(bookableID, traveler, destinationObj, numTravelers, departDate, dur);
+  let trip = new Trip(bookableID, traveler, destinationObj, numTravelers, departDate, dur);
   traveler.travelerTrips.push(trip);
+  traveler.travelerDestinations.push(agency.findDestinationInfo(destinationSelection));
   bookableID++;
-  console.log(trip, 'trip in bookTrip')
   postBooking(trip)
   .then((res) => checkForErrors(res))
-  .then((addedTrip) => displayNewTrip(addedTrip))
   .catch((error) => displayErrorMessage(error));
+  displayNewTrip(trip);
   MicroModal.close('modal-1');
-  showUserData(); 
 };
 
 function displayErrorMessage(error) {
@@ -104,7 +105,7 @@ function displayDestinationList() {
 }
 
 function checkForErrors(response) {
-  console.log(response.body);
+  console.log(response);
   if (!response.ok) {
     throw new Error('Please check to make sure you have all the imput feilds filled out!');
   }
