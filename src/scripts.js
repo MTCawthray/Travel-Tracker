@@ -81,10 +81,12 @@ function bookTrip() {
   const destinationSelection = destSelection.value;
   const destinationObj = agency.findDestinationInfo(destinationSelection);
   const departDate = dayjs(departureInput.value).format('YYYY/MM/DD');
+  const departDateReadable = dayjs(departureInput.value);
   const returnDate = dayjs(returnInput.value);
   const dur = returnDate.diff(departDate, 'day');
+  const verifiedDates = checkDates(departDateReadable, returnDate); 
   const verifiedTrip = verifyTripDetails(numTravelers, destinationSelection, destinationObj, departDate, returnDate, dur);
-  if (verifiedTrip) {
+  if (verifiedTrip && verifiedDates) {
     let trip = new Trip(bookableID, traveler, destinationObj, numTravelers, departDate, dur);
     traveler.travelerTrips.push(trip);
     traveler.travelerDestinations.push(agency.findDestinationInfo(destinationSelection));
@@ -99,17 +101,24 @@ function bookTrip() {
     MicroModal.close('modal-1');
     MicroModal.show('modal-1');
     bookingError.classList.remove('hidden');
-    console.log('You fucked up')
   }
 };
 
-function verifyTripDetails(travelers, dest, destObj, depart, dateReturn, dur) {
-  if (!travelers || !dest || !destObj || !depart || !dateReturn || !dur) {
-    return false;
-  } else {
-    return true;
-  }
-}
+// function checkDates(depart, comeHome) {
+//   let today = dayjs();
+//   if (comeHome.isBefore(depart) || comeHome.isSame(depart) || depart.isBefore(today)){
+//     return false;
+//   }
+//   return true;
+// }
+
+// function verifyTripDetails(travelers, dest, destObj, depart, dateReturn, dur) {
+//   if (!travelers || !dest || !destObj || !depart || !dateReturn || !dur) {
+//     return false;
+//   } else {
+//     return true;
+//   }
+// }
 //functions for displaying data ---------------------------------
 function displayTravelerInfo(user) {
   if (!user) {
@@ -137,9 +146,24 @@ function displayDestinationList() {
 
 //helper functions -------------------------------------------------------
 function checkForErrors(response) {
-  console.log(response);
   if (!response.ok) {
     throw new Error('Please check to make sure you have all the imput feilds filled out!');
+  }
+}
+
+function checkDates(depart, comeHome) {
+  let today = dayjs();
+  if (comeHome.isBefore(depart) || comeHome.isSame(depart) || depart.isBefore(today)){
+    return false;
+  }
+  return true;
+}
+
+function verifyTripDetails(travelers, dest, destObj, depart, dateReturn, dur) {
+  if (!travelers || !dest || !destObj || !depart || !dateReturn || !dur) {
+    return false;
+  } else {
+    return true;
   }
 }
 
