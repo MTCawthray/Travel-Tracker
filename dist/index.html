@@ -13,11 +13,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Codystar&family=Comfortaa:wght@700&family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
+  <header class="hidden" id="user-nav">
     <h1 class="travelTracker">travelTRACKER</h1>
     <nav>
       <ul>
-        <li id="sign-in" data-micromodal-trigger="modal-2" >sign-in</li>
+        <li id="sign-in" data-micromodal-trigger="modal-2" ><img src="./images/swap.png" alt="swap users icon" class="headerIcon">change user</li>
         <li id="book-btn" data-micromodal-trigger="modal-1" ><img src="./images/suitcase.png" alt="book icon" class="headerIcon">book</li> 
        <!-- <li><img src="./images/map.png" alt="find icon" class="headerIcon"><a href="#"></a>find</li> 
        <li><img src="./images/destination.png" alt="explore icon" class="headerIcon" ><a href="#"></a>explore</li>  -->
@@ -48,6 +48,7 @@
         <button class="modalClose" aria-label="Close modal" data-micromodal-close></button>
       </header>
       <div class="modalContent" id="modal-1-content">
+        <p class="loginError hidden" id="booking-error">Please make sure you've filled out the form completely</p>
         <form class="bookingForm">
           <select class="selectDestination" id="select-destination" name="destinations" placeholder="Select a destination" aria-required="true" required>
             <!-- destination names interpolate here -->
@@ -75,12 +76,13 @@
       <div class="modalContent" id="modal-2-content">
         <form class="loginForm">
          <h2>Enter your login information:</h2> 
-         <div class="loginInputs">
+         <div class="loginInputs" id="login-modal-inputs">
           <label for="user-name-input">Username</label> 
           <input class="usernameInput" id="user-name-input" type="text" minlength="9" maxlength="10" placeholder="username">
           <label for="password-input">Password</label>
           <input class="passwordInput" id="password-input" type="password" minlength="8" placeholder="password">
           <button type="submit" class="submitLoginBtn" id="submit-login-btn" name="submitLoginBtn">Submit</button>
+          <p class="loginError hidden" id="login-error">Please make sure your username and password are correct.</p>
         </div>
         </form>
       </div>

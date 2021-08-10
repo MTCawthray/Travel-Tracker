@@ -17,6 +17,7 @@ $header-background: rgba(255, 255, 255, 0.825);
 
 h1 {
   font-family: 'Dustismo', sans-serif!important;
+  text-align: right;
 }
 
 h2,
@@ -97,6 +98,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  margin-top: 15vh;
 }
 
 .greeting {
@@ -110,6 +112,13 @@ main {
   width: auto;
 }
 
+.loginInputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.submitBookingBtn,
+.submitLoginBtn,
 .welcomeSignIn {
   border: none;
   width: 87vw;
@@ -119,10 +128,18 @@ main {
   color: white;
 }
 
+.submitBookingBtn:hover,
+.submitLoginBtn:hover,
 .welcomeSignIn:hover {
   box-shadow: 0 10px 9px rgb(0 0 0 / 37%);
   background-color: #00259e;
   font-style: italic;
+}
+
+.submitBookingBtn,
+.submitLoginBtn {
+  margin-top: 2em;
+  width: 78vw;
 }
 
 article {
@@ -141,11 +158,14 @@ article {
 
 .locationIcon,
 .statusIcon,
-.takeoffIcon,
-.headerIcon {
+.takeoffIcon {
   height: 2em;
 }
 
+.headerIcon {
+  height:1.25em;
+  margin: 0 .2em;
+}
 .headerInfo {
 padding: .5em;
 }
@@ -169,6 +189,11 @@ li,
   align-items: center;
 }
 
+.loginError {
+  color: darkred;
+  text-align:center;
+  text-emphasis: italic;
+}
 //book trip modal
 
 .modal {
@@ -190,7 +215,7 @@ li,
 .modalContainer {
   background-color: #fff;
   padding: 30px;
-  height: 57vh;
+  height: 66vh;
   width: 97vw;
   border-radius: 4px;
   overflow-y: auto;
@@ -213,6 +238,7 @@ li,
   line-height: 1.25;
   color: #00449e;
   box-sizing: border-box;
+  text-align: center;
 }
 
 .modalClose {
