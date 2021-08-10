@@ -11,6 +11,7 @@ const loginModal = document.getElementById('modal-2');
 const signInBtn = document.getElementById('sign-in');
 const welcomeSignInBtn = document.getElementById('welcome-sign-in');
 const userNav = document.getElementById('user-nav');
+const loginError = document.getElementById('login-error');
 
 const domUpdates = {
   //render methods
@@ -110,7 +111,8 @@ const domUpdates = {
   loginModal,
   signInBtn,
   welcomeSignInBtn,
-  userNav
+  userNav,
+  loginError
 }
 
 export default domUpdates;

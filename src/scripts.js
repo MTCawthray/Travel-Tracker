@@ -23,7 +23,7 @@ import {
 } from './apiCalls.js';
 
 //variables---------------------------------------------------------------
-const {bookBtn, submitBookingBtn, submitLoginBtn, loginModal, signInBtn, welcomeSignInBtn, userNav} = domUpdates;
+const {bookBtn, submitBookingBtn, submitLoginBtn, loginModal, signInBtn, welcomeSignInBtn, userNav, loginError} = domUpdates;
 
 let travelersData, tripsData, destinationData, traveler, agency, user, bookableID;
 
@@ -46,8 +46,13 @@ function submitUserData() {
   let userID = parseInt(document.getElementById('user-name-input').value.split('Traveler')[1]);
   let password = document.getElementById('password-input').value;
   if (password === 'Traveler' && userID <= 50 && userID > 0) {
+    loginError.classList.add('hidden');
     MicroModal.close('modal-2');
     returnData(userID);
+  } else {
+    MicroModal.close('modal-2');
+    MicroModal.show('modal-2');
+    loginError.classList.remove('hidden');
   }
 }
 

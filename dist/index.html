@@ -75,12 +75,13 @@
       <div class="modalContent" id="modal-2-content">
         <form class="loginForm">
          <h2>Enter your login information:</h2> 
-         <div class="loginInputs">
+         <div class="loginInputs" id="login-modal-inputs">
           <label for="user-name-input">Username</label> 
           <input class="usernameInput" id="user-name-input" type="text" minlength="9" maxlength="10" placeholder="username">
           <label for="password-input">Password</label>
           <input class="passwordInput" id="password-input" type="password" minlength="8" placeholder="password">
           <button type="submit" class="submitLoginBtn" id="submit-login-btn" name="submitLoginBtn">Submit</button>
+          <p class="loginError hidden" id="login-error">Please make sure your username and password are correct.</p>
         </div>
         </form>
       </div>
