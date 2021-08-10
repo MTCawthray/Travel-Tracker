@@ -23,7 +23,7 @@ import {
 } from './apiCalls.js';
 
 //variables---------------------------------------------------------------
-const {bookBtn, submitBookingBtn, submitLoginBtn, loginModal, signInBtn, welcomeSignInBtn, userNav, loginError, bookingError} = domUpdates;
+const {bookBtn, submitBookingBtn, submitLoginBtn, signInBtn, welcomeSignInBtn, userNav, loginError, bookingError, departureInput, returnInput, destSelection, numTravelersInput} = domUpdates;
 
 let travelersData, tripsData, destinationData, traveler, agency, user, bookableID;
 
@@ -77,11 +77,11 @@ function returnData(id) {
 
 function bookTrip() {
   event.preventDefault()
-  const numTravelers = parseInt(document.getElementById('select-num-travelers').value);
-  const destinationSelection = document.getElementById('select-destination').value;
+  const numTravelers = parseInt(numTravelersInput.value);
+  const destinationSelection = destSelection.value;
   const destinationObj = agency.findDestinationInfo(destinationSelection);
-  const departDate = dayjs(document.getElementById('departure-date').value).format('YYYY/MM/DD');
-  const returnDate = dayjs(document.getElementById('return-date').value);
+  const departDate = dayjs(departureInput.value).format('YYYY/MM/DD');
+  const returnDate = dayjs(returnInput.value);
   const dur = returnDate.diff(departDate, 'day');
   const verifiedTrip = verifyTripDetails(numTravelers, destinationSelection, destinationObj, departDate, returnDate, dur);
   if (verifiedTrip) {
