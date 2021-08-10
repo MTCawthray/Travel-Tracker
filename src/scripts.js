@@ -8,7 +8,7 @@ import domUpdates from './domUpdates.js';
 import dayjs from 'dayjs';
 
 import './images/travel.png';
-import './images/turing-logo.png';
+import './images/swap.png';
 import './images/passport.png';
 import './images/confirm.png';
 import './images/airplane.png';
