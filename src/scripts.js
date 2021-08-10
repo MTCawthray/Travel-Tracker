@@ -23,7 +23,7 @@ import {
 } from './apiCalls.js';
 
 //variables---------------------------------------------------------------
-const {bookBtn, submitBookingBtn, submitLoginBtn, signInBtn, welcomeSignInBtn, userNav, loginError, bookingError, departureInput, returnInput, destSelection, numTravelersInput, userNameInput, passwordInput} = domUpdates;
+const {bookBtn, submitBookingBtn, submitLoginBtn, signInBtn, welcomeSignInBtn, userNav, loginError, bookingError, departureInput, returnInput, destSelection, numTravelersInput, userNameInput, passwordInput, upcomingTripsBtn} = domUpdates;
 
 let travelersData, tripsData, destinationData, traveler, agency, user, bookableID;
 
@@ -39,8 +39,13 @@ bookBtn.addEventListener('click', () => {
 });
 submitBookingBtn.addEventListener('click', bookTrip);
 submitLoginBtn.addEventListener('click', submitUserData);
+upcomingTripsBtn.addEventListener('click', displayUpcomingTrips);
 
 //functions -----------------------------------------------------
+function displayUpcomingTrips() {
+  
+}
+
 function submitUserData() {
   event.preventDefault();
   let userID = parseInt(userNameInput.value.split('traveler')[1]);
