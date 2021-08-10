@@ -77,7 +77,6 @@ const domUpdates = {
     let totalCost = traveler.getTripCost(newBooking.id).total;
      let destination = traveler.findDestination(newBooking.destinationID);
      let tripStatus = determineStatus(newBooking);
-     console.log(newBooking);
     cardContainer.innerHTML += `
       <article class="travelCard">
             <div class="headerContent">
