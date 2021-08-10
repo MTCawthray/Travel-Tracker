@@ -9,6 +9,7 @@ const submitBookingBtn = document.getElementById('submit-booking-btn');
 const submitLoginBtn = document.getElementById('submit-login-btn');
 const loginModal = document.getElementById('modal-2');
 const signInBtn = document.getElementById('sign-in');
+const welcomeSignInBtn = document.getElementById('welcome-sign-in');
 
 const domUpdates = {
   //render methods
@@ -106,7 +107,8 @@ const domUpdates = {
   submitBookingBtn,
   submitLoginBtn,
   loginModal,
-  signInBtn
+  signInBtn,
+  welcomeSignInBtn
 }
 
 export default domUpdates;

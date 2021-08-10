@@ -6,6 +6,7 @@ import Trip from './Trip.js';
 import domUpdates from './domUpdates.js';
 import dayjs from 'dayjs';
 
+import './images/travel.png';
 import './images/turing-logo.png';
 import './images/passport.png';
 import './images/confirm.png';
@@ -14,7 +15,8 @@ import './images/suitcase.png';
 import './images/map.png';
 import './images/destination.png';
 import './images/wall-clock.png';
-const {bookBtn, submitBookingBtn, submitLoginBtn, loginModal, signInBtn} = domUpdates;
+const {bookBtn, submitBookingBtn, submitLoginBtn, loginModal, signInBtn, welcomeSignInBtn} = domUpdates;
+
 import {
   fetchData,
   postBooking
@@ -24,6 +26,9 @@ let travelersData, tripsData, destinationData, traveler, agency, user, bookableI
 
 //event listeners
 signInBtn.addEventListener('click', () => {
+  MicroModal.show('modal-2')
+});
+welcomeSignInBtn.addEventListener('click', () => {
   MicroModal.show('modal-2')
 });
 bookBtn.addEventListener('click', () => {
