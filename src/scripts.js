@@ -1,3 +1,4 @@
+//imports---------------------------------------------------------------------
 import './css/base.scss';
 import MicroModal from 'micromodal';
 import Agency from './Agency.js';
@@ -15,13 +16,15 @@ import './images/suitcase.png';
 import './images/map.png';
 import './images/destination.png';
 import './images/wall-clock.png';
-const {bookBtn, submitBookingBtn, submitLoginBtn, loginModal, signInBtn, welcomeSignInBtn} = domUpdates;
 
 import {
   fetchData,
   postBooking
 } from './apiCalls.js';
-//variables
+
+//variables---------------------------------------------------------------
+const {bookBtn, submitBookingBtn, submitLoginBtn, loginModal, signInBtn, welcomeSignInBtn, userNav} = domUpdates;
+
 let travelersData, tripsData, destinationData, traveler, agency, user, bookableID;
 
 //event listeners
@@ -35,9 +38,10 @@ bookBtn.addEventListener('click', () => {
   MicroModal.show('modal-1')
 });
 submitBookingBtn.addEventListener('click', bookTrip);
-submitLoginBtn.addEventListener('click', showUserData);
+submitLoginBtn.addEventListener('click', submitUserData);
 
-function showUserData() {
+//functions -----------------------------------------------------
+function submitUserData() {
   event.preventDefault();
   let userID = parseInt(document.getElementById('user-name-input').value.split('Traveler')[1]);
   let password = document.getElementById('password-input').value;
@@ -52,7 +56,6 @@ function getData(id) {
 };
 
 function returnData(id) {
-  // event.preventDefault();
   getData(id)
     .then(promiseArray => {
       travelersData = promiseArray[0].travelers;
@@ -65,16 +68,6 @@ function returnData(id) {
       displayTravelerInfo(traveler);
       displayDestinationList();
     })
-};
-
-function displayTravelerInfo(user) {
-  if (!user) {
-    MicroModal.show('modal-2');
-  } else {
-    let trips = user.travelerTrips;
-    domUpdates.renderTravelerInfo(user, trips);
-    domUpdates.renderFooterInfo(user);
-  }
 };
 
 function bookTrip() {
@@ -96,6 +89,18 @@ function bookTrip() {
   MicroModal.close('modal-1');
 };
 
+//functions for displaying data ---------------------------------
+function displayTravelerInfo(user) {
+  if (!user) {
+    MicroModal.show('modal-2');
+  } else {
+    userNav.classList.remove('hidden');
+    let trips = user.travelerTrips;
+    domUpdates.renderTravelerInfo(user, trips);
+    domUpdates.renderFooterInfo(user);
+  }
+};
+
 function displayErrorMessage(error) {
   console.log(error);
 }
@@ -109,6 +114,7 @@ function displayDestinationList() {
   domUpdates.renderDestinationList(destintationNames);
 }
 
+//helper functions -------------------------------------------------------
 function checkForErrors(response) {
   console.log(response);
   if (!response.ok) {

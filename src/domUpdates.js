@@ -10,6 +10,7 @@ const submitLoginBtn = document.getElementById('submit-login-btn');
 const loginModal = document.getElementById('modal-2');
 const signInBtn = document.getElementById('sign-in');
 const welcomeSignInBtn = document.getElementById('welcome-sign-in');
+const userNav = document.getElementById('user-nav');
 
 const domUpdates = {
   //render methods
@@ -108,7 +109,8 @@ const domUpdates = {
   submitLoginBtn,
   loginModal,
   signInBtn,
-  welcomeSignInBtn
+  welcomeSignInBtn,
+  userNav
 }
 
 export default domUpdates;
