@@ -5,6 +5,11 @@ const bookBtn = document.getElementById('book-btn');
 const cardContainer = document.getElementById('card-container');
 const footerDisplay = document.getElementById('footer-info');
 const selection = document.getElementById('select-destination');
+const submitBookingBtn = document.getElementById('submit-booking-btn');
+const submitLoginBtn = document.getElementById('submit-login-btn');
+const loginModal = document.getElementById('modal-2');
+const signInBtn = document.getElementById('sign-in');
+const welcomeSignInBtn = document.getElementById('welcome-sign-in');
 
 const domUpdates = {
   //render methods
@@ -76,7 +81,7 @@ const domUpdates = {
                   <h2>${destination.destination}</h2>
                 </div> 
                 <div class="confirmationHolder">
-                  <h3>status: ${trip.status}</h3>
+                  <h3>status: ${newBooking.status}</h3>
                   <img src="${tripStatus}" alt="confirmation status icon" class="statusIcon"> 
                 </div>       
               </div>
@@ -87,10 +92,10 @@ const domUpdates = {
             <div class="bodyContent">
               <div class="departureIconHolder">
                 <img src="./images/airplane.png" alt="takeoff icon" class="takeoffIcon">
-                <h3>Departs: ${trip.date}</h3>
+                <h3>Departs: ${newBooking.date}</h3>
               </div>
               <h4>Cost: $${totalCost}</h4>
-              <h4>number of travelers: ${trip.travelers}</h4>
+              <h4>number of travelers: ${newBooking.travelers}</h4>
             </div>
           </article>
      `
@@ -99,6 +104,11 @@ const domUpdates = {
 //query selectors
 
   bookBtn,
+  submitBookingBtn,
+  submitLoginBtn,
+  loginModal,
+  signInBtn,
+  welcomeSignInBtn
 }
 
 export default domUpdates;

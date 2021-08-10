@@ -5,8 +5,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Travel Tracker</title>
+  <link href="http://fonts.cdnfonts.com/css/dustismo" rel="stylesheet">
+                
+                
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Codystar&family=Comfortaa:wght@700&family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -14,7 +17,8 @@
     <h1 class="travelTracker">travelTRACKER</h1>
     <nav>
       <ul>
-       <li id="book-btn" data-micromodal-trigger="modal-1" ><img src="./images/suitcase.png" alt="book icon" class="headerIcon"><a href="#"></a>book</li> 
+        <li id="sign-in" data-micromodal-trigger="modal-2" >sign-in</li>
+        <li id="book-btn" data-micromodal-trigger="modal-1" ><img src="./images/suitcase.png" alt="book icon" class="headerIcon">book</li> 
        <!-- <li><img src="./images/map.png" alt="find icon" class="headerIcon"><a href="#"></a>find</li> 
        <li><img src="./images/destination.png" alt="explore icon" class="headerIcon" ><a href="#"></a>explore</li>  -->
       </ul>
@@ -22,13 +26,18 @@
   </header>
   <main>
     <section class="cardContainer" id="card-container">
+      <article class="welcomeCard">
+        <h2 class="greeting">Welcome to Travel Tracker</h2>
+        <img src="./images/travel.png" alt="Plane flying around the globe icon" class="greetingIcon">
+      </article>
+      <button type="button" class="welcomeSignIn" id="welcome-sign-in">Click here to sign in</button>
     </section>
   </main>
   <footer>
     <section class="footerInfoDisplay" id="footer-info">
     </section>
   </footer>
-  <!-- modal html -->
+  <!--book a trip modal html -->
 <div class="modal micromodalSlide" id="modal-1" aria-hidden="true">
   <div tabindex="-1" class="modalOverlay" data-micromodal-close>
     <div class="modalContainer" role="dialog" aria-modal="true" aria-labelledby="modal-1-title" >
@@ -41,8 +50,7 @@
       <div class="modalContent" id="modal-1-content">
         <form class="bookingForm">
           <select class="selectDestination" id="select-destination" name="destinations" placeholder="Select a destination" aria-required="true" required>
-            <!-- <option value="placeholder">Select a destination</option>
-            <option value="interpolate destination name here">interpolate destination name here</option> -->
+            <!-- destination names interpolate here -->
           </select>
           <div class="dateHolder">
             <label for="departure-date" class="inputLabel">Depart</label><input type="date" class="selectDate" id="departure-date" required >
@@ -50,6 +58,30 @@
           </div>
           <label for="select-num-travelers" class="selectNumLabel" >How many travelers?</label><input type="number" name="numberOfTravelers" class="selectNumTravelers" id="select-num-travelers" value='1' step='1' min='1' max='40' aria-required="true">
           <button type="submit" class="submitBookingBtn" id="submit-booking-btn" name="submitBookingBtn">Submit Trip</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- login modal html -->
+<div class="modal micromodalSlide" id="modal-2" aria-hidden="true">
+  <div tabindex="-1" class="modalOverlay" >
+    <div class="modalContainer" role="dialog" aria-modal="true" aria-labelledby="modal-2-title" >
+      <header class="modalHeader">
+        <h2 class="modalTitle" id="modal-2-title">
+          Welcome to travelTRACKER
+        </h2>
+      </header>
+      <div class="modalContent" id="modal-2-content">
+        <form class="loginForm">
+         <h2>Enter your login information:</h2> 
+         <div class="loginInputs">
+          <label for="user-name-input">Username</label> 
+          <input class="usernameInput" id="user-name-input" type="text" minlength="9" maxlength="10" placeholder="username">
+          <label for="password-input">Password</label>
+          <input class="passwordInput" id="password-input" type="password" minlength="8" placeholder="password">
+          <button type="submit" class="submitLoginBtn" id="submit-login-btn" name="submitLoginBtn">Submit</button>
+        </div>
         </form>
       </div>
     </div>
