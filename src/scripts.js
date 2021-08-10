@@ -23,7 +23,7 @@ import {
 } from './apiCalls.js';
 
 //variables---------------------------------------------------------------
-const {bookBtn, submitBookingBtn, submitLoginBtn, loginModal, signInBtn, welcomeSignInBtn, userNav, loginError} = domUpdates;
+const {bookBtn, submitBookingBtn, submitLoginBtn, loginModal, signInBtn, welcomeSignInBtn, userNav, loginError, bookingError} = domUpdates;
 
 let travelersData, tripsData, destinationData, traveler, agency, user, bookableID;
 
@@ -83,17 +83,33 @@ function bookTrip() {
   const departDate = dayjs(document.getElementById('departure-date').value).format('YYYY/MM/DD');
   const returnDate = dayjs(document.getElementById('return-date').value);
   const dur = returnDate.diff(departDate, 'day');
-  let trip = new Trip(bookableID, traveler, destinationObj, numTravelers, departDate, dur);
-  traveler.travelerTrips.push(trip);
-  traveler.travelerDestinations.push(agency.findDestinationInfo(destinationSelection));
-  bookableID++;
-  postBooking(trip)
-  .then((res) => checkForErrors(res))
-  .catch((error) => displayErrorMessage(error));
-  displayNewTrip(trip);
-  MicroModal.close('modal-1');
+  const verifiedTrip = verifyTripDetails(numTravelers, destinationSelection, destinationObj, departDate, returnDate, dur);
+  if (verifiedTrip) {
+    let trip = new Trip(bookableID, traveler, destinationObj, numTravelers, departDate, dur);
+    traveler.travelerTrips.push(trip);
+    traveler.travelerDestinations.push(agency.findDestinationInfo(destinationSelection));
+    bookableID++;
+    postBooking(trip)
+    .then((res) => checkForErrors(res))
+    .catch((error) => displayErrorMessage(error));
+    displayNewTrip(trip);
+    bookingError.classList.add('hidden');
+    MicroModal.close('modal-1');
+  } else {
+    MicroModal.close('modal-1');
+    MicroModal.show('modal-1');
+    bookingError.classList.remove('hidden');
+    console.log('You fucked up')
+  }
 };
 
+function verifyTripDetails(travelers, dest, destObj, depart, dateReturn, dur) {
+  if (!travelers || !dest || !destObj || !depart || !dateReturn || !dur) {
+    return false;
+  } else {
+    return true;
+  }
+}
 //functions for displaying data ---------------------------------
 function displayTravelerInfo(user) {
   if (!user) {

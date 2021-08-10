@@ -12,6 +12,7 @@ const signInBtn = document.getElementById('sign-in');
 const welcomeSignInBtn = document.getElementById('welcome-sign-in');
 const userNav = document.getElementById('user-nav');
 const loginError = document.getElementById('login-error');
+const bookingError = document.getElementById('booking-error');
 
 const domUpdates = {
   //render methods
@@ -112,7 +113,8 @@ const domUpdates = {
   signInBtn,
   welcomeSignInBtn,
   userNav,
-  loginError
+  loginError,
+  bookingError
 }
 
 export default domUpdates;
