@@ -13,6 +13,12 @@ const welcomeSignInBtn = document.getElementById('welcome-sign-in');
 const userNav = document.getElementById('user-nav');
 const loginError = document.getElementById('login-error');
 const bookingError = document.getElementById('booking-error');
+const departureInput = document.getElementById('departure-date');
+const returnInput = document.getElementById('return-date');
+const destSelection = document.getElementById('select-destination');
+const numTravelersInput = document.getElementById('select-num-travelers');
+const userNameInput = document.getElementById('user-name-input');
+const passwordInput = document.getElementById('password-input');
 
 const domUpdates = {
   //render methods
@@ -73,7 +79,6 @@ const domUpdates = {
     let totalCost = traveler.getTripCost(newBooking.id).total;
      let destination = traveler.findDestination(newBooking.destinationID);
      let tripStatus = determineStatus(newBooking);
-     console.log(newBooking);
     cardContainer.innerHTML += `
       <article class="travelCard">
             <div class="headerContent">
@@ -114,7 +119,13 @@ const domUpdates = {
   welcomeSignInBtn,
   userNav,
   loginError,
-  bookingError
+  bookingError, 
+  departureInput,
+  returnInput, 
+  destSelection,
+  numTravelersInput,
+  userNameInput,
+  passwordInput
 }
 
 export default domUpdates;

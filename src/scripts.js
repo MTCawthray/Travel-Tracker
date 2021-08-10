@@ -23,7 +23,7 @@ import {
 } from './apiCalls.js';
 
 //variables---------------------------------------------------------------
-const {bookBtn, submitBookingBtn, submitLoginBtn, loginModal, signInBtn, welcomeSignInBtn, userNav, loginError, bookingError} = domUpdates;
+const {bookBtn, submitBookingBtn, submitLoginBtn, signInBtn, welcomeSignInBtn, userNav, loginError, bookingError, departureInput, returnInput, destSelection, numTravelersInput, userNameInput, passwordInput} = domUpdates;
 
 let travelersData, tripsData, destinationData, traveler, agency, user, bookableID;
 
@@ -43,9 +43,9 @@ submitLoginBtn.addEventListener('click', submitUserData);
 //functions -----------------------------------------------------
 function submitUserData() {
   event.preventDefault();
-  let userID = parseInt(document.getElementById('user-name-input').value.split('Traveler')[1]);
-  let password = document.getElementById('password-input').value;
-  if (password === 'Traveler' && userID <= 50 && userID > 0) {
+  let userID = parseInt(userNameInput.value.split('traveler')[1]);
+  let password = passwordInput.value;
+  if (password === 'traveler' && userID <= 50 && userID > 0) {
     loginError.classList.add('hidden');
     MicroModal.close('modal-2');
     returnData(userID);
@@ -77,14 +77,16 @@ function returnData(id) {
 
 function bookTrip() {
   event.preventDefault()
-  const numTravelers = parseInt(document.getElementById('select-num-travelers').value);
-  const destinationSelection = document.getElementById('select-destination').value;
+  const numTravelers = parseInt(numTravelersInput.value);
+  const destinationSelection = destSelection.value;
   const destinationObj = agency.findDestinationInfo(destinationSelection);
-  const departDate = dayjs(document.getElementById('departure-date').value).format('YYYY/MM/DD');
-  const returnDate = dayjs(document.getElementById('return-date').value);
+  const departDate = dayjs(departureInput.value).format('YYYY/MM/DD');
+  const departDateReadable = dayjs(departureInput.value);
+  const returnDate = dayjs(returnInput.value);
   const dur = returnDate.diff(departDate, 'day');
+  const verifiedDates = checkDates(departDateReadable, returnDate); 
   const verifiedTrip = verifyTripDetails(numTravelers, destinationSelection, destinationObj, departDate, returnDate, dur);
-  if (verifiedTrip) {
+  if (verifiedTrip && verifiedDates) {
     let trip = new Trip(bookableID, traveler, destinationObj, numTravelers, departDate, dur);
     traveler.travelerTrips.push(trip);
     traveler.travelerDestinations.push(agency.findDestinationInfo(destinationSelection));
@@ -99,17 +101,9 @@ function bookTrip() {
     MicroModal.close('modal-1');
     MicroModal.show('modal-1');
     bookingError.classList.remove('hidden');
-    console.log('You fucked up')
   }
 };
 
-function verifyTripDetails(travelers, dest, destObj, depart, dateReturn, dur) {
-  if (!travelers || !dest || !destObj || !depart || !dateReturn || !dur) {
-    return false;
-  } else {
-    return true;
-  }
-}
 //functions for displaying data ---------------------------------
 function displayTravelerInfo(user) {
   if (!user) {
@@ -137,9 +131,24 @@ function displayDestinationList() {
 
 //helper functions -------------------------------------------------------
 function checkForErrors(response) {
-  console.log(response);
   if (!response.ok) {
     throw new Error('Please check to make sure you have all the imput feilds filled out!');
+  }
+}
+
+function checkDates(depart, comeHome) {
+  let today = dayjs();
+  if (comeHome.isBefore(depart) || comeHome.isSame(depart) || depart.isBefore(today)){
+    return false;
+  }
+  return true;
+}
+
+function verifyTripDetails(travelers, dest, destObj, depart, dateReturn, dur) {
+  if (!travelers || !dest || !destObj || !depart || !dateReturn || !dur) {
+    return false;
+  } else {
+    return true;
   }
 }
 
