@@ -7,6 +7,8 @@ const footerDisplay = document.getElementById('footer-info');
 const selection = document.getElementById('select-destination');
 const submitBookingBtn = document.getElementById('submit-booking-btn');
 const submitLoginBtn = document.getElementById('submit-login-btn');
+const loginModal = document.getElementById('modal-2');
+const signInBtn = document.getElementById('sign-in');
 
 const domUpdates = {
   //render methods
@@ -102,7 +104,9 @@ const domUpdates = {
 
   bookBtn,
   submitBookingBtn,
-  submitLoginBtn
+  submitLoginBtn,
+  loginModal,
+  signInBtn
 }
 
 export default domUpdates;
