@@ -28,6 +28,7 @@ const {bookBtn, submitBookingBtn, submitLoginBtn, signInBtn, welcomeSignInBtn, u
 let travelersData, tripsData, destinationData, traveler, agency, user, bookableID;
 
 //event listeners
+
 signInBtn.addEventListener('click', () => {
   MicroModal.show('modal-2')
 });
@@ -40,8 +41,19 @@ bookBtn.addEventListener('click', () => {
 submitBookingBtn.addEventListener('click', bookTrip);
 submitLoginBtn.addEventListener('click', submitUserData);
 upcomingTripsBtn.addEventListener('click', displayUpcomingTrips);
+window.addEventListener('load', submitTestData);
 
 //functions -----------------------------------------------------
+function submitTestData() {
+  event.preventDefault();
+  let userID = 14;
+  let password = 'traveler';
+  if (password === 'traveler' && userID <= 50 && userID > 0) {
+    returnData(userID);
+  }
+}
+
+
 function displayUpcomingTrips() {
   let futureTrips = traveler.travelerTrips.filter(journy => {
     let today = dayjs().format('YYYY/MM/DD')
