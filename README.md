@@ -1,8 +1,6 @@
 # Travel Tracker
 - An interactive travel dashboard where users can book new trips as well as display their past, present, and future trips.
 
-- [visit the deployed site here](https://mtcawthray.github.io/Travel-Tracker/)
-
 ## Table Of Contents
 + [Overview](#overview)
 + [Examples](#examples)
@@ -159,9 +157,6 @@ If you look in the `package.json` file, you'll see one of the library dependenci
   + Chai
   + Webpack
   + Local Server API (for fetch requests)
-
-## View Deployed Page
-  + [click this link to visit deployed app](https://mtcawthray.github.io/Travel-Tracker/)
 
 ## Contributors
   + Mark Cawthray (author)
