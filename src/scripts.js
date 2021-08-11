@@ -23,7 +23,7 @@ import {
 } from './apiCalls.js';
 
 //variables---------------------------------------------------------------
-const {bookBtn, submitBookingBtn, submitLoginBtn, signInBtn, welcomeSignInBtn, userNav, loginError, bookingError, departureInput, returnInput, destSelection, numTravelersInput, userNameInput, passwordInput, upcomingTripsBtn} = domUpdates;
+const {bookBtn, submitBookingBtn, submitLoginBtn, signInBtn, welcomeSignInBtn, userNav, loginError, bookingError, departureInput, returnInput, destSelection, numTravelersInput, userNameInput, passwordInput, upcomingTripsBtn, cardContainer, upcomingError} = domUpdates;
 
 let travelersData, tripsData, destinationData, traveler, agency, user, bookableID;
 
@@ -43,7 +43,18 @@ upcomingTripsBtn.addEventListener('click', displayUpcomingTrips);
 
 //functions -----------------------------------------------------
 function displayUpcomingTrips() {
-  
+  let futureTrips = traveler.travelerTrips.filter(journy => {
+    let today = dayjs().format('YYYY/MM/DD')
+    if (dayjs(journy.date).isAfter(today)) {
+      return journy;
+    }
+  });
+  if (!futureTrips.length) {
+    upcomingError.classList.toggle('hidden');
+  } else {
+    cardContainer.innerHTML = '';
+    futureTrips.forEach(element => displayNewTrip(element));
+  }
 }
 
 function submitUserData() {

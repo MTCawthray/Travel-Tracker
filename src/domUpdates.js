@@ -19,6 +19,8 @@ const destSelection = document.getElementById('select-destination');
 const numTravelersInput = document.getElementById('select-num-travelers');
 const userNameInput = document.getElementById('user-name-input');
 const passwordInput = document.getElementById('password-input');
+const upcomingTripsBtn = document.getElementById('upcoming-trips');
+const upcomingError = document.getElementById('upcoming-error');
 
 const domUpdates = {
   //render methods
@@ -125,7 +127,10 @@ const domUpdates = {
   destSelection,
   numTravelersInput,
   userNameInput,
-  passwordInput
+  passwordInput,
+  upcomingTripsBtn,
+  cardContainer,
+  upcomingError
 }
 
 export default domUpdates;
